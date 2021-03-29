@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox spacing="4.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="title" text="Label">
+         <font>
+            <Font name="JetBrains Mono Regular" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="amplitudeField">
+         <font>
+            <Font name="JetBrains Mono Regular" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="meanField" layoutX="10.0" layoutY="27.0">
+         <font>
+            <Font name="JetBrains Mono Regular" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="deviationField" layoutX="10.0" layoutY="52.0">
+         <font>
+            <Font name="JetBrains Mono Regular" size="12.0" />
+         </font>
+      </TextField>
+   </children>
+</VBox>

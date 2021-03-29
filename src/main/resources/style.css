@@ -1,0 +1,10 @@
+.default-color0.chart-series-area-line {
+    -fx-stroke-width: 1px;
+ }
+
+.chart-series-area-fill {
+    -fx-fill: null;
+}
+
+.default-color0.chart-series-area-line { -fx-stroke: #FF9200; }
+.default-color1.chart-series-area-line { -fx-stroke: #0180E2; }
