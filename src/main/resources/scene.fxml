@@ -202,7 +202,7 @@
                      </content>
                   </TitledPane>
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSignalGenerateButton" text="Сгенерировать сигнал" />
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Запустить" />
+                  <Button fx:id="onRunAlgorithmButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Запустить" />
                </children>
             </VBox>
          </content>
