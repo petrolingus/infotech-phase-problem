@@ -1,4 +1,4 @@
-package me.petrolingus.math;
+package me.petrolingus.infotechphaseproblem.domain.math;
 
 import java.util.Objects;
 

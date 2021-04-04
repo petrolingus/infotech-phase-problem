@@ -1,7 +1,7 @@
-package me.petrolingus.generator;
+package me.petrolingus.infotechphaseproblem.domain.generator;
 
 import javafx.scene.chart.XYChart;
-import me.petrolingus.math.Complex;
+import me.petrolingus.infotechphaseproblem.domain.math.Complex;
 
 import java.util.ArrayList;
 import java.util.Random;

@@ -1,12 +1,12 @@
-package me.petrolingus.service;
+package me.petrolingus.infotechphaseproblem.infrastructure.service;
 
 import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.XYChart;
-import me.petrolingus.generator.SpectrumGenerator;
-import me.petrolingus.math.FastFourierTransform;
+import me.petrolingus.infotechphaseproblem.domain.generator.SpectrumGenerator;
+import me.petrolingus.infotechphaseproblem.domain.math.FastFourierTransform;
 
 import static javafx.collections.FXCollections.observableList;
 

@@ -1,4 +1,4 @@
-package me.petrolingus.generator;
+package me.petrolingus.infotechphaseproblem.domain.generator;
 
 public class GaussianDome {
 

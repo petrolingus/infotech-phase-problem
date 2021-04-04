@@ -1,4 +1,4 @@
-package me.petrolingus;
+package me.petrolingus.infotechphaseproblem;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

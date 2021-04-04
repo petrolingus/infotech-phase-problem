@@ -1,17 +1,16 @@
-package me.petrolingus.controller;
+package me.petrolingus.infotechphaseproblem.infrastructure.controller;
 
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.TextField;
-import me.petrolingus.generator.SpectrumGenerator;
-import me.petrolingus.generator.SignalGenerator;
-import me.petrolingus.math.Complex;
-import me.petrolingus.math.FastFourierTransform;
-import me.petrolingus.service.MathService;
+import me.petrolingus.infotechphaseproblem.domain.generator.SpectrumGenerator;
+import me.petrolingus.infotechphaseproblem.domain.generator.SignalGenerator;
+import me.petrolingus.infotechphaseproblem.domain.math.Complex;
+import me.petrolingus.infotechphaseproblem.domain.math.FastFourierTransform;
+import me.petrolingus.infotechphaseproblem.infrastructure.service.MathService;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import static javafx.collections.FXCollections.observableList;
 

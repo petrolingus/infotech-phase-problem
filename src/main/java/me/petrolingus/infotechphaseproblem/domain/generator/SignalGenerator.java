@@ -1,7 +1,7 @@
-package me.petrolingus.generator;
+package me.petrolingus.infotechphaseproblem.domain.generator;
 
 import javafx.scene.chart.XYChart;
-import me.petrolingus.math.FastFourierTransform;
+import me.petrolingus.infotechphaseproblem.domain.math.FastFourierTransform;
 
 import java.util.ArrayList;
 
