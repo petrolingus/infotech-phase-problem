@@ -7,6 +7,10 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.TextField;
 import me.petrolingus.infotechphaseproblem.domain.DiscreteSignalGenerator;
 import org.apache.commons.math3.analysis.function.Gaussian;
+import org.apache.commons.math3.complex.Complex;
+import org.apache.commons.math3.transform.DftNormalization;
+import org.apache.commons.math3.transform.FastFourierTransformer;
+import org.apache.commons.math3.transform.TransformType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +57,8 @@ public class Controller {
 
         int samplesCount = Integer.parseInt(samplesCountField.getText());
         axisConfigure(signalChartXAxis, samplesCount);
+        axisConfigure(amplitudeSpectrumChartXAxis, samplesCount);
+        axisConfigure(phaseSpectrumChartXAxis, samplesCount);
 
         double samplingRate = Double.parseDouble(samplingRateField.getText());
 
@@ -65,18 +71,44 @@ public class Controller {
         Gaussian gaussian5 = new Gaussian(3.5, 920, 3);
         List<Gaussian> gaussianList = List.of(gaussian1, gaussian2, gaussian3, gaussian4, gaussian5);
 
-        double[] signalArray = signalGenerator.generate(gaussianList);
 
-        // Creating signal data and put it into chart
-        List<XYChart.Data<Number, Number>> signalArrayList = new ArrayList<>();
-        for (int i = 0; i < signalArray.length; i++) {
-            signalArrayList.add(new XYChart.Data<>(i, signalArray[i]));
-        }
-        XYChart.Series<Number, Number> signalSeries = new XYChart.Series<>(
-                FXCollections.observableList(signalArrayList)
-        );
+        // Creating signal data series and put it into chart
+        double[] signalArray = signalGenerator.generate(gaussianList);
+        XYChart.Series<Number, Number> signalSeries = arrayToSeries(signalArray);
         signalChart.getData().clear();
         signalChart.getData().add(signalSeries);
+
+
+        FastFourierTransformer fastFourierTransformer = new FastFourierTransformer(DftNormalization.STANDARD);
+        Complex[] fft = fastFourierTransformer.transform(signalArray, TransformType.FORWARD);
+
+
+        // Creating amplitude data series and put it into chart
+        double[] amplitudeSpectrumData = new double[fft.length];
+        for (int i = 0; i < amplitudeSpectrumData.length; i++) {
+            amplitudeSpectrumData[i] = fft[i].abs();
+        }
+        XYChart.Series<Number, Number> amplitudeSpectrumSeries = arrayToSeries(amplitudeSpectrumData);
+        amplitudeSpectrumChart.getData().clear();
+        amplitudeSpectrumChart.getData().add(amplitudeSpectrumSeries);
+
+
+        // Creating phase data series and put it into chart
+        double[] phaseSpectrumData = new double[fft.length];
+        for (int i = 0; i < phaseSpectrumData.length; i++) {
+            phaseSpectrumData[i] = fft[i].getArgument();
+        }
+        XYChart.Series<Number, Number> phaseSpectrumSeries = arrayToSeries(phaseSpectrumData);
+        phaseSpectrumChart.getData().clear();
+        phaseSpectrumChart.getData().add(phaseSpectrumSeries);
+    }
+
+    private XYChart.Series<Number, Number> arrayToSeries(double[] data) {
+        List<XYChart.Data<Number, Number>> list = new ArrayList<>();
+        for (int i = 0; i < data.length; i++) {
+            list.add(new XYChart.Data<>(i, data[i]));
+        }
+        return new XYChart.Series<>(FXCollections.observableList(list));
     }
 
     private void axisConfigure(NumberAxis axis, int upperBound) {
