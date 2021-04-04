@@ -50,7 +50,7 @@ public class MathService extends Service<Void> {
 
                 System.out.println("before while");
 
-                FastFourierTransform.ifft()
+//                FastFourierTransform.ifft()
 
                 while (!isCancelled()) {
 
