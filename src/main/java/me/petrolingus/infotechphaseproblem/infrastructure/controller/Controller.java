@@ -1,18 +1,15 @@
 package me.petrolingus.infotechphaseproblem.infrastructure.controller;
 
+import javafx.collections.FXCollections;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.TextField;
-import me.petrolingus.infotechphaseproblem.domain.generator.SpectrumGenerator;
-import me.petrolingus.infotechphaseproblem.domain.generator.SignalGenerator;
-import me.petrolingus.infotechphaseproblem.domain.math.Complex;
-import me.petrolingus.infotechphaseproblem.domain.math.FastFourierTransform;
-import me.petrolingus.infotechphaseproblem.infrastructure.service.MathService;
+import me.petrolingus.infotechphaseproblem.domain.DiscreteSignalGenerator;
+import org.apache.commons.math3.analysis.function.Gaussian;
 
 import java.util.ArrayList;
-
-import static javafx.collections.FXCollections.observableList;
+import java.util.List;
 
 public class Controller {
 
@@ -45,54 +42,47 @@ public class Controller {
     public TextField meanField5;
     public TextField deviationField5;
 
-    private final SignalGenerator signalGenerator = new SignalGenerator();
-    private SpectrumGenerator spectrumGenerator;
-    private MathService mathService;
+    public TextField samplesCountField;
+    public TextField samplingRateField;
 
     public void initialize() {
-
-        axisInitialize(signalChartXAxis);
-        axisInitialize(amplitudeSpectrumChartXAxis);
-        axisInitialize(phaseSpectrumChartXAxis);
-
-        createSignal();
-
-        mathService = new MathService(signalChart, amplitudeSpectrumChart, phaseSpectrumChart, spectrumGenerator);
+        onSignalGenerateButton();
     }
 
-    private void axisInitialize(NumberAxis axis) {
+    public void onSignalGenerateButton() {
 
+        int samplesCount = Integer.parseInt(samplesCountField.getText());
+        axisConfigure(signalChartXAxis, samplesCount);
+
+        double samplingRate = Double.parseDouble(samplingRateField.getText());
+
+        DiscreteSignalGenerator signalGenerator = new DiscreteSignalGenerator(samplesCount, samplingRate);
+
+        Gaussian gaussian1 = new Gaussian(4, 150, 3);
+        Gaussian gaussian2 = new Gaussian(2, 380, 2);
+        Gaussian gaussian3 = new Gaussian(3.5, 600, 3);
+        Gaussian gaussian4 = new Gaussian(2.5, 800, 2);
+        Gaussian gaussian5 = new Gaussian(3.5, 920, 3);
+        List<Gaussian> gaussianList = List.of(gaussian1, gaussian2, gaussian3, gaussian4, gaussian5);
+
+        double[] signalArray = signalGenerator.generate(gaussianList);
+
+        // Creating signal data and put it into chart
+        List<XYChart.Data<Number, Number>> signalArrayList = new ArrayList<>();
+        for (int i = 0; i < signalArray.length; i++) {
+            signalArrayList.add(new XYChart.Data<>(i, signalArray[i]));
+        }
+        XYChart.Series<Number, Number> signalSeries = new XYChart.Series<>(
+                FXCollections.observableList(signalArrayList)
+        );
+        signalChart.getData().clear();
+        signalChart.getData().add(signalSeries);
+    }
+
+    private void axisConfigure(NumberAxis axis, int upperBound) {
         axis.setAutoRanging(false);
-        axis.setLowerBound(SignalGenerator.SIGNAL_BEGIN);
-        axis.setUpperBound(SignalGenerator.SIGNAL_END);
-        axis.setTickUnit(SignalGenerator.SIGNAL_TICK_UNIT);
-    }
-
-    private void createSignal() {
-
-        ArrayList<XYChart.Data<Number, Number>> signal = signalGenerator.generate();
-        signalChart.getData().add(new XYChart.Series<>(observableList(signal)));
-
-        Complex[] in = new Complex[SignalGenerator.SAMPLES_COUNT];
-        for (int i = 0; i < SignalGenerator.SAMPLES_COUNT; i++) {
-            in[i] = new Complex(signal.get(i).getYValue().doubleValue(), 0.0);
-        }
-        Complex[] out = FastFourierTransform.fft(in);
-
-        spectrumGenerator = new SpectrumGenerator(out);
-
-        var amplitudeSpectrum = spectrumGenerator.generateAmplitudeSpectrum();
-        amplitudeSpectrumChart.getData().add(new XYChart.Series<>(observableList(amplitudeSpectrum)));
-
-        var phaseSpectrum = spectrumGenerator.generatePhaseSpectrum();
-        phaseSpectrumChart.getData().add(new XYChart.Series<>(observableList(phaseSpectrum)));
-    }
-
-    public void onStartAlgorithm() {
-
-        if(!mathService.isRunning()) {
-            mathService.reset();
-            mathService.start();
-        }
+        axis.setLowerBound(0);
+        axis.setUpperBound(upperBound);
+        axis.setTickUnit(128);
     }
 }

@@ -5,12 +5,14 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.petrolingus.infotechphaseproblem.infrastructure.controller.Controller">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.petrolingus.infotechphaseproblem.infrastructure.controller.Controller">
    <children>
       <VBox HBox.hgrow="ALWAYS">
          <children>
@@ -44,133 +46,169 @@
             </VBox>
          </children>
       </VBox>
-      <VBox prefWidth="200.0" spacing="8.0">
+      <ScrollPane fitToWidth="true">
+         <content>
+            <VBox spacing="8.0">
+               <padding>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </padding>
+               <children>
+                  <TitledPane animated="false" collapsible="false" expanded="false" minWidth="200.0" prefWidth="200.0" text="Параметры куполов">
+                     <content>
+                        <VBox>
+                           <children>
+                              <VBox spacing="4.0">
+                                 <children>
+                                    <Label text="Label">
+                                       <font>
+                                          <Font name="JetBrains Mono Regular" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="amplitudeField1">
+                                       <font>
+                                          <Font name="JetBrains Mono Regular" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="meanField1">
+                                       <font>
+                                          <Font name="JetBrains Mono Regular" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="deviationField1">
+                                       <font>
+                                          <Font name="JetBrains Mono Regular" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox spacing="4.0">
+                                 <children>
+                                    <Label text="Label">
+                                       <font>
+                                          <Font name="JetBrains Mono Regular" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="amplitudeField2">
+                                       <font>
+                                          <Font name="JetBrains Mono Regular" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="meanField2">
+                                       <font>
+                                          <Font name="JetBrains Mono Regular" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="deviationField2">
+                                       <font>
+                                          <Font name="JetBrains Mono Regular" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox spacing="4.0">
+                                 <children>
+                                    <Label text="Label">
+                                       <font>
+                                          <Font name="JetBrains Mono Regular" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="amplitudeField3">
+                                       <font>
+                                          <Font name="JetBrains Mono Regular" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="meanField3">
+                                       <font>
+                                          <Font name="JetBrains Mono Regular" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="deviationField3">
+                                       <font>
+                                          <Font name="JetBrains Mono Regular" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox spacing="4.0">
+                                 <children>
+                                    <Label text="Label">
+                                       <font>
+                                          <Font name="JetBrains Mono Regular" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="amplitudeField4">
+                                       <font>
+                                          <Font name="JetBrains Mono Regular" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="meanField4">
+                                       <font>
+                                          <Font name="JetBrains Mono Regular" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="deviationField4">
+                                       <font>
+                                          <Font name="JetBrains Mono Regular" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox spacing="4.0">
+                                 <children>
+                                    <Label text="Label">
+                                       <font>
+                                          <Font name="JetBrains Mono Regular" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="amplitudeField5">
+                                       <font>
+                                          <Font name="JetBrains Mono Regular" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="meanField5">
+                                       <font>
+                                          <Font name="JetBrains Mono Regular" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="deviationField5">
+                                       <font>
+                                          <Font name="JetBrains Mono Regular" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </TitledPane>
+                  <TitledPane text="Параметрты сигнала">
+                     <content>
+                        <VBox>
+                           <children>
+                              <VBox layoutX="20.0" layoutY="20.0">
+                                 <children>
+                                    <Label text="Число семплов" />
+                                    <TextField fx:id="samplesCountField" text="1024" />
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <Label text="Частота дискретизации" />
+                                    <TextField fx:id="samplingRateField" text="1.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </TitledPane>
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSignalGenerateButton" text="Сгенерировать сигнал" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Запустить" />
+               </children>
+            </VBox>
+         </content>
          <padding>
             <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
          </padding>
-         <children>
-            <VBox spacing="4.0">
-               <children>
-                  <Label text="Label">
-                     <font>
-                        <Font name="JetBrains Mono Regular" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="amplitudeField1">
-                     <font>
-                        <Font name="JetBrains Mono Regular" size="12.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="meanField1">
-                     <font>
-                        <Font name="JetBrains Mono Regular" size="12.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="deviationField1">
-                     <font>
-                        <Font name="JetBrains Mono Regular" size="12.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </VBox>
-            <VBox spacing="4.0">
-               <children>
-                  <Label text="Label">
-                     <font>
-                        <Font name="JetBrains Mono Regular" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="amplitudeField2">
-                     <font>
-                        <Font name="JetBrains Mono Regular" size="12.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="meanField2">
-                     <font>
-                        <Font name="JetBrains Mono Regular" size="12.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="deviationField2">
-                     <font>
-                        <Font name="JetBrains Mono Regular" size="12.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </VBox>
-            <VBox spacing="4.0">
-               <children>
-                  <Label text="Label">
-                     <font>
-                        <Font name="JetBrains Mono Regular" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="amplitudeField3">
-                     <font>
-                        <Font name="JetBrains Mono Regular" size="12.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="meanField3">
-                     <font>
-                        <Font name="JetBrains Mono Regular" size="12.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="deviationField3">
-                     <font>
-                        <Font name="JetBrains Mono Regular" size="12.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </VBox>
-            <VBox spacing="4.0">
-               <children>
-                  <Label text="Label">
-                     <font>
-                        <Font name="JetBrains Mono Regular" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="amplitudeField4">
-                     <font>
-                        <Font name="JetBrains Mono Regular" size="12.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="meanField4">
-                     <font>
-                        <Font name="JetBrains Mono Regular" size="12.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="deviationField4">
-                     <font>
-                        <Font name="JetBrains Mono Regular" size="12.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </VBox>
-            <VBox spacing="4.0">
-               <children>
-                  <Label text="Label">
-                     <font>
-                        <Font name="JetBrains Mono Regular" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="amplitudeField5">
-                     <font>
-                        <Font name="JetBrains Mono Regular" size="12.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="meanField5">
-                     <font>
-                        <Font name="JetBrains Mono Regular" size="12.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="deviationField5">
-                     <font>
-                        <Font name="JetBrains Mono Regular" size="12.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </VBox>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Сгенерировать новый сигнал" />
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onStartAlgorithm" text="Запустить" />
-         </children></VBox>
+      </ScrollPane>
    </children>
 </HBox>
