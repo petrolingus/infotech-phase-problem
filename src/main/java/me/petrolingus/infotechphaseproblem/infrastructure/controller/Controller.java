@@ -5,7 +5,7 @@ import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.TextField;
-import me.petrolingus.infotechphaseproblem.domain.DiscreteSignalGenerator;
+import me.petrolingus.infotechphaseproblem.domain.generator.DiscreteSignalGenerator;
 import org.apache.commons.math3.analysis.function.Gaussian;
 import org.apache.commons.math3.complex.Complex;
 import org.apache.commons.math3.transform.DftNormalization;

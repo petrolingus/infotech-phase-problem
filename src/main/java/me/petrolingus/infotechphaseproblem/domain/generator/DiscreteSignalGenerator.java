@@ -1,4 +1,4 @@
-package me.petrolingus.infotechphaseproblem.domain;
+package me.petrolingus.infotechphaseproblem.domain.generator;
 
 import org.apache.commons.math3.analysis.function.Gaussian;
 
