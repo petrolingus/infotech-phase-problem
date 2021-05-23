@@ -202,7 +202,15 @@
                      </content>
                   </TitledPane>
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSignalGenerateButton" text="Сгенерировать сигнал" />
-                  <Button fx:id="onRunAlgorithmButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Запустить" />
+                  <Button fx:id="startButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onRunAlgorithmButton" text="Запустить" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onStopAlgorithmButton" text="Стоп" />
+                  <TextField fx:id="number" text="1" />
+                  <HBox spacing="8.0">
+                     <children>
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onLeftButton" text="&lt;-" HBox.hgrow="ALWAYS" />
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="-&gt;" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </content>

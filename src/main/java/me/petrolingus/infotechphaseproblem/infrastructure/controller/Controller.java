@@ -4,14 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import me.petrolingus.infotechphaseproblem.domain.core.Algorithm;
-import me.petrolingus.infotechphaseproblem.domain.generator.DiscreteSignalGenerator;
-import org.apache.commons.math3.analysis.function.Gaussian;
-import org.apache.commons.math3.complex.Complex;
-import org.apache.commons.math3.transform.DftNormalization;
-import org.apache.commons.math3.transform.FastFourierTransformer;
-import org.apache.commons.math3.transform.TransformType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,9 +43,18 @@ public class Controller {
     public TextField deviationField5;
 
     public TextField samplesCountField;
+
     public TextField samplingRateField;
 
+    public TextField number;
+
+    public Button startButton;
+
     private Algorithm algorithm;
+
+    private boolean isRunning = false;
+
+    private int shift = 0;
 
     public void initialize() {
         onSignalGenerateButton();
@@ -63,7 +67,13 @@ public class Controller {
         configureAxis(samplesCount);
 
         double samplingRate = Double.parseDouble(samplingRateField.getText());
+
         algorithm = new Algorithm(samplesCount, samplingRate);
+        // TODO: 04.04.2021 FIX THIS SHIT ////////////////////////
+        algorithm.signalChart = signalChart;
+        algorithm.amplitudeSpectrumChart = amplitudeSpectrumChart;
+        algorithm.phaseSpectrumChart = phaseSpectrumChart;
+        //////////////////////////////////////////////////////////
         algorithm.initialize();
 
         // Creating signal data series and put it into chart
@@ -86,7 +96,37 @@ public class Controller {
     }
 
     public void onRunAlgorithmButton() {
+        System.out.println(algorithm.getState());
+        if (!isRunning) {
+            algorithm.start();
+            isRunning = true;
+        }
+    }
 
+    public void onStopAlgorithmButton() {
+        algorithm.cancel();
+    }
+
+    public void onLeftButton() {
+
+        int n = Integer.parseInt(number.getText());
+
+        shift += n;
+
+        double[] signalData = algorithm.getSignalN();
+
+        XYChart.Series<Number, Number> series = new XYChart.Series<>();
+        for (int i = 0; i < signalData.length; i++) {
+            double value = signalData[(i + shift) % signalData.length];
+            series.getData().add(new XYChart.Data<>(i, value));
+        }
+
+        int size = signalChart.getData().size();
+        if (size < 2) {
+            signalChart.getData().add(series);
+        } else {
+            signalChart.getData().set(1, series);
+        }
     }
 
     private XYChart.Series<Number, Number> arrayToSeries(double[] data) {
