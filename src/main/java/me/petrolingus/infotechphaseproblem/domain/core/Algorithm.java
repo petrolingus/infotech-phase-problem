@@ -25,27 +25,14 @@ public class Algorithm extends Service<Void> {
 
     private double[] signalN;
 
-    private int samplesCount;
-    private double samplingRate;
+    public int samplesCount;
+    public double samplingRate;
 
     public AreaChart<Number, Number> signalChart;
     public AreaChart<Number, Number> amplitudeSpectrumChart;
     public AreaChart<Number, Number> phaseSpectrumChart;
 
-    public Algorithm(int samplesCount, double samplingRate) {
-        this.samplesCount = samplesCount;
-        this.samplingRate = samplingRate;
-    }
-
-
-        public void initialize() {
-
-        Gaussian gaussian1 = new Gaussian(4, 150, 3);
-        Gaussian gaussian2 = new Gaussian(2, 380, 2);
-        Gaussian gaussian3 = new Gaussian(3.5, 600, 3);
-        Gaussian gaussian4 = new Gaussian(2.5, 800, 2);
-        Gaussian gaussian5 = new Gaussian(3.5, 920, 3);
-        List<Gaussian> gaussianList = List.of(gaussian1, gaussian2, gaussian3, gaussian4, gaussian5);
+    public void initialize(List<Gaussian> gaussianList) {
         DiscreteSignalGenerator signalGenerator = new DiscreteSignalGenerator(samplesCount, samplingRate);
         signalData = signalGenerator.generate(gaussianList);
 
@@ -140,8 +127,6 @@ public class Algorithm extends Service<Void> {
                     }
 
                 }
-
-
 
                 return null;
             }

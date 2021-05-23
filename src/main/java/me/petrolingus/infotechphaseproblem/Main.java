@@ -6,15 +6,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/scene.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/scene.fxml")));
 
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
 
         primaryStage.setTitle("Phase Problem Task");
         primaryStage.setScene(scene);
